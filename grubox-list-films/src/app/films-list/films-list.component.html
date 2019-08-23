@@ -1,0 +1,63 @@
+<div class="container ">
+    <h5 class="card-title text-center font-weight-bold">BASIC FILMS LIST</h5>
+    <div class="row">
+        <label>Sort By:</label>
+        <div class="col-sm-1"><button class="btn btn-dark" type="button" (click)="sort('rt_score')">Rating</button></div>
+        <div class="col-sm-2 mr-auto"><button class="btn btn-dark" type="button" (click)="sort('rt_score')">Release Year</button></div>
+        <label>Filter By:</label>
+        <div class="col-sm-3"><input type="text" name="search" class="form-control" #filterInput></div>
+        <div class="col-sm-1"><button class="btn btn-dark" type="button" (click)="filterByTitle(filterInput.value);">Title</button></div>
+        <div class="col-sm-1"><button class="btn btn-dark" type="button" (click)="filterByDirector(filterInput.value);">Director</button></div>
+    </div>
+    <div class="row">
+      
+    <table class="table table-hover table-striped table-bordered table-dark table-condensed mx-auto" >
+    
+      
+    <div *ngIf="filterInput.value==''">
+      <thead>
+          <tr>
+              <th id="title" (click)="sort('title')" >Title</th>
+              <th id="description" (click)="sort('description')">Description</th>
+              <th id="release_year" (click)="sort('release_year')">Release Year</th>
+              <th id="director" (click)="sort('director')">Director</th>
+              <th id="producer" (click)="sort('producer')">Producer</th>
+              <th id="rt_score" (click)="sort('rt_score')">Rating</th>
+          </tr>
+      </thead>
+    <tbody *ngFor="let film of films| orderBy: key : reverse ; let i = index" >
+      <tr>
+      <td>{{film.title}}</td>
+      <td>{{film.description}}</td>
+      <td>{{film.release_date}}</td>
+      <td>{{film.director}}</td>
+      <td>{{film.producer}}</td>
+      <td>{{film.rt_score}}</td>
+      </tr>
+    </tbody>
+    </div>
+    <div *ngIf="search==true">
+      <thead>
+          <tr>
+              <th id="title" (click)="sort('title')" >Title</th>
+              <th id="description" (click)="sort('description')">Description</th>
+              <th id="release_year" (click)="sort('release_year')">Release Year</th>
+              <th id="director" (click)="sort('director')">Director</th>
+              <th id="producer" (click)="sort('producer')">Producer</th>
+              <th id="rt_score" (click)="sort('rt_score')">Rating</th>
+          </tr>
+      </thead>
+    <tbody *ngFor="let film of films| filter:filter; let i = index" >
+        <tr>
+        <td>{{film.title}}</td>
+        <td>{{film.description}}</td>
+        <td>{{film.release_date}}</td>
+        <td>{{film.director}}</td>
+        <td>{{film.producer}}</td>
+        <td>{{film.rt_score}}</td>
+        </tr>
+      </tbody>
+    </div>
+    </table>
+</div>
+</div>

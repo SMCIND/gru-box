@@ -1,0 +1,15 @@
+.container{
+    padding:2rem;
+}
+.card-title {
+    margin-bottom: 2rem;
+    font-weight: 300;
+    font-size: 1.5rem;
+}
+td{
+    border:1px solid #000;
+}
+
+tr td:nth-child(1) :nth-child(3) {
+    width:13%;
+}
